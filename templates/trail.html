@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      background-color: #F8C471;
+      font-family: 'Arimo', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login {
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+    }
+
+    .login h1 {
+      text-align: center;
+      font-family: 'Pacifico', cursive;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .form-row input {
+      width: 30%;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .form-row input[type="number"] {
+      width: 100%;
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+      background-color: #4CAF50;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .btn-block:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="login">
+      <h1>Car Class Prediction</h1>
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}" method="post">
+        <div class="form-row">
+          <input type="number" name="Compactness" placeholder="Compactness" required="required">
+          <input type="number" name="Circularity" placeholder="Circularity" required="required">
+          <input type="number" name="Distance Circularity" placeholder="Distance circularity" required="required">
+        </div>
+        <div class="form-row">
+          <input type="number" name="Radius Ratio" placeholder="Radius ratio" required="required">
+          <input type="number" name="pr.axis_aspect_ratio" placeholder="Pr axis aspect ratio" required="required">
+          <input type="number" name="max.length_aspect_ratio" placeholder="Max length aspect ratio" required="required">
+        </div>
+        <div class="form-row">
+          <input type="number" name="scatter_ratio" placeholder="Scatter ratio" required="required">
+          <input type="number" name="elongatedness" placeholder="Elongatedness" required="required">
+          <input type="number" name="pr.axis_rectangularity" placeholder="Pr axis rectangularity" required="required">
+        </div>
+        <div class="form-row">
+          <input type="number" name="max.length_rectangularity" placeholder="Max length rectangularity" required="required">
+          <input type="number" name="scaled_variance" placeholder="Scaled variance" required="required">
+          <input type="number" name="scaled_variance.1" placeholder="Scaled variance.1" required="required">
+        </div>
+        <div class="form-row">
+          <input type="number" name="scaled_radius_of_gyration" placeholder="Scaled radius of gyration" required="required">
+          <input type="number" name="scaled_radius_of_gyration.1" placeholder="Scaled radius of gyration 1" required="required">
+          <input type="number" name="skewness_about" placeholder="Skewness about" required="required">
+        </div>
+        <div class="form-row">
+          <input type="number" name="skewness_about.1" placeholder="Skewness about.1" required="required">
+          <input type="number" name="skewness_about.2" placeholder="Skewness about.2" required="required">
+          <input type="number" name="hollows_ratio" placeholder="Hollows ratio" required="required">
+        </div>
+        <button type="submit" class="btn-block btn-large">Predict</button>
+      </form>
+      <br>
+      <br>
+      {{ prediction_text }}
+    </div>
+  </div>
+</body>
+</html>

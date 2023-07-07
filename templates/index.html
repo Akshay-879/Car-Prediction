@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Car Class Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="number" name="Compactness" placeholder="Compactness" required="required" />
+        <input type="number" name="Circularity" placeholder="Circularity" required="required" />
+		<input type="number" name="Distance Circularity" placeholder="Distance Circularity" required="required" />
+		<input type="number" name="Radius Ratio" placeholder="Radius Ratio" required="required" />
+        <input type="number" name="pr.axis_aspect_ratio" placeholder="pr.axis_aspect_ratio" required="required" /><br>
+		<input type="number" name="max.length_aspect_ratio" placeholder="max.length_aspect_ratio" required="required" />
+		<input type="number" name="scatter_ratio" placeholder="scatter_ratio" required="required" />
+        <input type="number" name="elongatedness" placeholder="elongatedness" required="required" />
+		<input type="number" name="pr.axis_rectangularity" placeholder="pr.axis_rectangularity" required="required" />
+		<input type="number" name="max.length_rectangularity" placeholder="max.length_rectangularity" required="required" /><br>
+        <input type="number" name="scaled_variance" placeholder="scaled_variance" required="required" />
+		<input type="number" name="scaled_variance.1" placeholder="scaled_variance.1" required="required" />
+		<input type="number" name="scaled_radius_of_gyration" placeholder="scaled_radius_of_gyration" required="required" />
+        <input type="number" name="scaled_radius_of_gyration.1" placeholder="scaled_radius_of_gyration.1" required="required" />
+		<input type="number" name="skewness_about" placeholder="skewness_about" required="required" /><br>
+		<input type="number" name="skewness_about.1" placeholder="skewness_about.1" required="required" />
+        <input type="number" name="skewness_about.2" placeholder="skewness_about.2" required="required" />
+		<input type="number" name="hollows_ratio" placeholder="hollows_ratio" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
